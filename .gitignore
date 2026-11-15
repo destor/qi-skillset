@@ -1,2 +1,10 @@
 dist/
 .DS_Store
+
+# Keys and secrets must never be committed.
+*_key
+*_key.pub
+id_rsa*
+id_ed25519*
+*.pem
+.env

@@ -112,7 +112,11 @@ jobs:
       # A release drafted in the GitHub UI already exists when its tag triggers
       # this run, and so does one from an earlier run of the same tag. In both
       # cases the zips and prompts are added to it, replacing any of the same
-      # name.
+      # name, and its notes are left as they are.
+      #
+      # A new release takes its notes from the tag's message when the tag is
+      # annotated (git tag -a v1.0.0 -m "..."); otherwise GitHub generates
+      # them from the commits since the previous release.
       - name: Create release or update the existing one
         env:
           GH_TOKEN: ${{ github.token }}
@@ -122,6 +126,19 @@ jobs:
           set -euo pipefail
           if gh release view "$TAG" > /dev/null 2>&1; then
             gh release upload "$TAG" dist/*.zip dist/prompts/*.md --clobber
+            exit 0
+          fi
+
+          read -r type sha < <(gh api "repos/$GH_REPO/git/ref/tags/$TAG" --jq '.object.type + " " + .object.sha')
+          notes=""
+          if [ "$type" = tag ]; then
+            # A signed tag carries its signature at the end of the message.
+            notes="$(gh api "repos/$GH_REPO/git/tags/$sha" --jq .message | sed '/^-----BEGIN /,$d')"
+          fi
+
+          if [ -n "${notes//[[:space:]]/}" ]; then
+            printf '%s\n' "$notes" > "$RUNNER_TEMP/notes.md"
+            gh release create "$TAG" dist/*.zip dist/prompts/*.md --title "$TAG" --notes-file "$RUNNER_TEMP/notes.md" --verify-tag
           else
             gh release create "$TAG" dist/*.zip dist/prompts/*.md --title "$TAG" --generate-notes --verify-tag
           fi
