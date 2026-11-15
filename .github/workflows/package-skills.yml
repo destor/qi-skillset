@@ -63,9 +63,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir staging
-          src="dist/${{ matrix.skill }}"
-          [ -d "$src" ] || src="dist/harness/${{ matrix.skill }}"
-          mv "$src" staging/
+          mv "dist/${{ matrix.skill }}" staging/
 
       - uses: actions/upload-artifact@v7
         with:
