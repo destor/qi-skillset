@@ -1,16 +1,4 @@
 #!/usr/bin/env bash
-# Builds copy-paste prompts from the built skills, for chats that cannot
-# import skills. Run scripts/build.sh first (it calls this script itself).
-#
-# For each skill folder dist/<name>/ it writes two files to dist/prompts/:
-#
-#   <name>-prompt.md       condensed: the SKILL.md body only. The frontmatter
-#                          and the "Reference files" section are removed.
-#   <name>-prompt-full.md  the body followed by every reference file.
-#
-# Nothing is rewritten or summarized: the prompts contain the skill's own
-# text, so they cannot drift from it. The condensed prompt leaves reference
-# files out; its preamble explains how to handle those omissions.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -25,8 +13,6 @@ fi
 rm -rf "$dest"
 mkdir -p "$dest"
 
-# SKILL.md without its frontmatter. With keep=0 the reference section
-# (from its heading to the next heading of the same level) is left out too.
 body() {
   awk -v keep="$2" -v section="$section" '
     NR == 1 && $0 == "---" { front = 1; next }
@@ -36,7 +22,6 @@ body() {
   ' "$1"
 }
 
-# A reference file with its title line marked with the path the body uses.
 reference() {
   awk -v path="$2" '
     !done && /^# / { sub(/^# /, ""); print "# File " path ": " $0; done = 1; next }
@@ -45,7 +30,6 @@ reference() {
   ' "$1"
 }
 
-# Strips trailing spaces and reduces runs of blank lines to one.
 squeeze() {
   awk '
     { sub(/[ \t]+$/, "") }

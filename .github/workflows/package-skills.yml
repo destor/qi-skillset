@@ -1,23 +1,5 @@
 name: Package skills
 
-# Runs scripts/build.sh, which builds one zip per folder in skills/ (portable
-# skills) and in harness-skills/ (skills for an agent harness such as Claude
-# Code), with the files in shared/ merged in. Each zip has the skill folder at
-# its root (qi-tutor.zip contains qi-tutor/SKILL.md, qi-tutor/references/...),
-# which is the layout Claude, ChatGPT and Gemini expect when a skill is
-# uploaded.
-#
-# build.sh also runs scripts/build-prompts.sh, which writes copy-paste prompts
-# to dist/prompts/ for chats that cannot import skills: for each portable
-# skill a condensed one (<name>-prompt.md) and one with the reference files included
-# (<name>-prompt-full.md).
-#
-# - Every push to main, every pull request and every manual run: the zips are
-#   available as workflow artifacts on the run page, one per skill, and the
-#   prompts as one artifact named "prompts".
-# - Pushing a tag such as v1.0.0: the zips and the prompts are also attached
-#   to a GitHub release.
-
 on:
   push:
     branches: [main]
@@ -51,7 +33,6 @@ jobs:
           json="$(printf '"%s",' "${names[@]}")"
           echo "skills=[${json%,}]" >> "$GITHUB_OUTPUT"
 
-      # Passed on to the jobs below, so the skills are built once.
       - uses: actions/upload-artifact@v7
         with:
           name: dist
@@ -78,14 +59,10 @@ jobs:
           name: dist
           path: dist
 
-      # upload-artifact zips whatever it is given. Staging the skill folder
-      # inside an otherwise empty folder makes the downloaded artifact itself
-      # the importable zip, with no zip inside a zip.
       - name: Stage skill folder
         run: |
           set -euo pipefail
           mkdir staging
-          # Portable skills are in dist/, agent-harness skills in dist/harness/.
           src="dist/${{ matrix.skill }}"
           [ -d "$src" ] || src="dist/harness/${{ matrix.skill }}"
           mv "$src" staging/
@@ -109,14 +86,6 @@ jobs:
           name: dist
           path: dist
 
-      # A release drafted in the GitHub UI already exists when its tag triggers
-      # this run, and so does one from an earlier run of the same tag. In both
-      # cases the zips and prompts are added to it, replacing any of the same
-      # name, and its notes are left as they are.
-      #
-      # A new release takes its notes from the tag's message when the tag is
-      # annotated (git tag -a v1.0.0 -m "..."); otherwise GitHub generates
-      # them from the commits since the previous release.
       - name: Create release or update the existing one
         env:
           GH_TOKEN: ${{ github.token }}
@@ -132,7 +101,6 @@ jobs:
           read -r type sha < <(gh api "repos/$GH_REPO/git/ref/tags/$TAG" --jq '.object.type + " " + .object.sha')
           notes=""
           if [ "$type" = tag ]; then
-            # A signed tag carries its signature at the end of the message.
             notes="$(gh api "repos/$GH_REPO/git/tags/$sha" --jq .message | sed '/^-----BEGIN /,$d')"
           fi
 
