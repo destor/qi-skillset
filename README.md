@@ -70,14 +70,3 @@ Start with the condensed prompt. Free chats have a limited memory for the conver
 - `shared/` holds files that every skill gets, such as the textbook map. They are merged into each skill when it is built, so the folders in `skills/` are not complete on their own. Import the release zips, not those folders.
 
 To build the zips locally, run `./scripts/build.sh`; they appear in `dist/`. The same run calls `scripts/build-prompts.sh`, which writes the copy-paste prompts to `dist/prompts/`. The prompts contain the skill's own text with nothing rewritten, so they need no separate upkeep.
-
-## Releasing
-
-Pushing a tag that starts with `v` builds the zips and prompts and attaches them to a GitHub release for that tag:
-
-```bash
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-Pushes to `main` and pull requests build the same zips as workflow artifacts on the run page, without a release.
