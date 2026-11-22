@@ -5,13 +5,14 @@ Where the mathematics the course uses is treated in four free books. Use it to c
 - **LADR:** Axler, *Linear Algebra Done Right*, 4th edition (2024). Open access (Creative Commons BY-NC) at https://linear.axler.net/. Sections are labelled by chapter and letter (7B).
 - **LADW:** Treil, *Linear Algebra Done Wrong*, version of 31 August 2026. Free for non-commercial use (Creative Commons BY-NC-ND 3.0) from the author's page, https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong.
 - **Watrous:** Watrous, *The Theory of Quantum Information* (Cambridge University Press, 2018). The author's manuscript is free for personal use at https://cs.uwaterloo.ca/~watrous/TQI/. Numbers below are those of the manuscript.
-- **Judson:** Judson, *Abstract Algebra: Theory and Applications*, annual edition (GNU Free Documentation License), at http://abstract.pugetsound.edu/. Numbers below are those of the 2026 edition.
+- **Judson:** Judson, *Abstract Algebra: Theory and Applications*, annual edition (GNU Free Documentation License), at https://judsonbooks.org/aata-files/aata-html/aata.html. Numbers below are those of the 2026 edition.
 
 Notes:
 
 - LADR for the concepts and the proofs; LADW for computing with explicit matrices and determinants. Give one of them, not both, unless the user needs the computation as well.
 - Watrous is precise and heavy. For channels, point first to the physical account (N-C §8.2, the part of Preskill Ch 3 on dilation to a unitary on a larger system), then to Watrous for the proofs.
 - Point to a mathematics source only where a step uses mathematics that the reader is not assumed to have; the course textbooks come first.
+- All four are free: a citation of one is a Markdown link to the URL above, such as [LADR 7B](https://linear.axler.net/).
 
 ## Linear algebra
 

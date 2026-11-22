@@ -2,9 +2,11 @@
 
 Where each topic is treated in the three course textbooks. Use it to cite by chapter and section. Anything not listed here: cite the chapter only, or give no reference.
 
-- **N-C:** Nielsen & Chuang, *Quantum Computation and Quantum Information*, 10th anniversary edition.
-- **Preskill:** Ph219 lecture notes.
-- **Wong:** *Introduction to Classical and Quantum Computing* (2022).
+- **N-C:** Nielsen & Chuang, *Quantum Computation and Quantum Information*, 10th anniversary edition. Not freely available; no link.
+- **Preskill:** Ph219 lecture notes, free at https://www.preskill.caltech.edu/ph219/.
+- **Wong:** *Introduction to Classical and Quantum Computing* (2022), free at https://www.thomaswong.net/introduction-to-classical-and-quantum-computing-1e4p.pdf.
+
+A citation of a free source is a Markdown link to the URL given here or in `math-map.md`, such as [Preskill Ch 7](https://www.preskill.caltech.edu/ph219/). Never link to a URL that is not in the two maps.
 
 Notes:
 

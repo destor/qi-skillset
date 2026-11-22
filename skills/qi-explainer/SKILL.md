@@ -69,6 +69,7 @@ One section per phenomenon, task or construct, in this order. For noise and hard
 - Cite by chapter and section number, never page numbers.
 - Take section numbers from `references/textbook-map.md`, and for mathematics from `references/math-map.md`. If the file is unavailable or does not list the topic, cite the chapter only. Never invent a section, equation number or exercise number.
 - If the explanation used mathematics the reader is not assumed to have, add one mathematics entry to the reading list: LADR for the concept, or LADW where the reader needs to compute.
+- Make each citation of a free source a Markdown link: Preskill to https://www.preskill.caltech.edu/ph219/, Wong to https://www.thomaswong.net/introduction-to-classical-and-quantum-computing-1e4p.pdf, the mathematics books to the URLs in `references/math-map.md`, for example [Preskill Ch 7](https://www.preskill.caltech.edu/ph219/). Link every entry of the reading list and the first inline citation of each source. N-C is not free and gets no link. Never link to any other URL.
 - Put a pointer inline where a step matches a textbook derivation, and end with a short reading list in study order: Wong for a first pass where it covers the topic, N-C for the standard treatment, Preskill for the deeper treatment.
 
 ## Output style

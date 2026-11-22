@@ -32,6 +32,7 @@ If a file is not available, proceed from this body alone.
 - **Stay inside the agreed subjects.**
 - **No flattery.** No praise, no encouragement phrases, no grading remarks during the session.
 - **No invented references.** Take section numbers from `references/textbook-map.md`, and for mathematics from `references/math-map.md`; otherwise cite the chapter only.
+- **Links to free sources.** Make each citation of a free source a Markdown link: Preskill to https://www.preskill.caltech.edu/ph219/, Wong to https://www.thomaswong.net/introduction-to-classical-and-quantum-computing-1e4p.pdf, the mathematics books to the URLs in `references/math-map.md`, for example [Preskill Ch 7](https://www.preskill.caltech.edu/ph219/). N-C is not free and gets no link. Never link to any other URL.
 
 ## Shape of a question
 

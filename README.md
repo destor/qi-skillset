@@ -27,7 +27,7 @@ For the mathematics, where a step needs more than basic linear algebra, they poi
 - Axler, [*Linear Algebra Done Right*](https://linear.axler.net/), 4th edition: the concepts and proofs, including the spectral theorem, positive operators, the singular value and polar decompositions, and tensor products.
 - Treil, [*Linear Algebra Done Wrong*](https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong): the same material with more computation and determinants.
 - Watrous, [*The Theory of Quantum Information*](https://cs.uwaterloo.ca/~watrous/TQI/): the step from linear algebra to quantum channels (Choi, Kraus and Stinespring representations).
-- Judson, [*Abstract Algebra: Theory and Applications*](http://abstract.pugetsound.edu/): groups, modular arithmetic, finite fields, and classical codes with Hamming distance.
+- Judson, [*Abstract Algebra: Theory and Applications*](https://judsonbooks.org/aata-files/aata-html/aata.html): groups, modular arithmetic, finite fields, and classical codes with Hamming distance.
 
 ## Importing the skills
 
