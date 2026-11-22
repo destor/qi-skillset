@@ -86,4 +86,22 @@ for dir in "$out"/*/; do
   } | squeeze > "$dest/$name-prompt-full.md"
 done
 
-wc -w "$dest"/*.md
+# Sizes of the prompts. Tokens are counted with OpenAI's open tokenizer
+# (tiktoken, o200k_base), an estimate for other models. This needs uv and a
+# network connection the first time; without them, word counts are shown.
+count_tokens() {
+  uv run --quiet --no-project --with tiktoken python -I - "$@" <<'EOF'
+import os, sys, tiktoken
+enc = tiktoken.get_encoding("o200k_base")
+print(f"{'prompt':36} {'words':>7} {'tokens':>7}")
+for path in sys.argv[1:]:
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    print(f"{os.path.basename(path):36} {len(text.split()):7} {len(enc.encode(text)):7}")
+EOF
+}
+
+if ! { command -v uv > /dev/null 2>&1 && count_tokens "$dest"/*.md 2> /dev/null; }; then
+  echo "note: uv or tiktoken is unavailable, so word counts are shown instead of tokens" >&2
+  wc -w "$dest"/*.md
+fi

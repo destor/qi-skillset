@@ -28,6 +28,7 @@ For the mathematics, where a step needs more than basic linear algebra, they poi
 - Treil, [*Linear Algebra Done Wrong*](https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong): the same material with more computation and determinants.
 - Watrous, [*The Theory of Quantum Information*](https://cs.uwaterloo.ca/~watrous/TQI/): the step from linear algebra to quantum channels (Choi, Kraus and Stinespring representations).
 - Judson, [*Abstract Algebra: Theory and Applications*](https://judsonbooks.org/aata-files/aata-html/aata.html): groups, modular arithmetic, finite fields, and classical codes with Hamming distance.
+  - Other versions: https://judsonbooks.org/abstract-algebra-theory-and-applications/
 
 ## Importing the skills
 
@@ -66,8 +67,10 @@ If your plan or app cannot import skills, use a prompt instead. Each release has
 
 | File | Contents | Size |
 | --- | --- | --- |
-| `<skill>-prompt.md` | The skill's instructions without its reference files. | About 1,300 to 2,000 words |
-| `<skill>-prompt-full.md` | The instructions followed by all reference files. | About 8,500 words (tutor, inquirer) or 11,000 words (explainer) |
+| `<skill>-prompt.md` | The skill's instructions without its reference files. | About 2,100 (explainer) to 2,900 (tutor) tokens |
+| `<skill>-prompt-full.md` | The instructions followed by all reference files. | About 13,000 (inquirer, tutor) or 17,000 (explainer) tokens |
+
+Sizes are in tokens, the unit in which a chat's memory is measured, as counted by OpenAI's tokenizer; other assistants count somewhat differently. The mathematics in the prompts makes them longer in tokens than their word count suggests.
 
 1. Download the file from the [latest release](https://github.com/destor/qi-skillset/releases/latest) and open it in a text editor.
 2. Copy the whole text into the first message of a new chat. The assistant will ask for a topic; reply with just its name, such as "phase kick-back". No extra command is needed. You can also append your topic, question, problem or previous-session summary after the prompt to start directly.
