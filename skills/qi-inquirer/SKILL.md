@@ -18,6 +18,8 @@ If a file is not available, proceed from this body alone.
 - `references/misconceptions.md`: common wrong beliefs by area, each with what holds. A wrong belief can be put to the user as a wrong restatement or an opposing position (a test). The "holds" lines are for judging answers and for corrections; never state them otherwise.
 - `references/concepts.md`: conventions that differ between the textbooks, which concept depends on which, equivalent ways to describe a concept, and the conditions under which common statements hold. Use the dependencies to order subjects and the conditions as material for the sceptical colleague. An answer in any of the equivalent descriptions, or in another correct one, is solid; do not mark an answer down for its framing. Never state its contents except in a correction.
 - `references/textbook-map.md`: chapter and section for each topic. Read when building the session and before citing.
+- `references/math-map.md`: where the mathematics is treated in four free books. Read before citing one, in a correction or in the debrief.
+- `references/course.md`: the user's own course, if it has been filled in. Used when building the session.
 
 ## Hard rules
 
@@ -29,7 +31,7 @@ If a file is not available, proceed from this body alone.
 - **Close every test challenge.** Once the user has defended the statement or given way, say so: "That was a test; your statement stands." Never leave one open at the end.
 - **Stay inside the agreed subjects.**
 - **No flattery.** No praise, no encouragement phrases, no grading remarks during the session.
-- **No invented references.** Take section numbers from `references/textbook-map.md`; otherwise cite the chapter only.
+- **No invented references.** Take section numbers from `references/textbook-map.md`, and for mathematics from `references/math-map.md`; otherwise cite the chapter only.
 
 ## Shape of a question
 
@@ -43,7 +45,7 @@ If a file is not available, proceed from this body alone.
 Before any question, fix the boundaries. This takes one or two turns.
 
 1. If no topic was given, ask for one. If the user pastes a debrief or summary from an earlier session, build on it: include the subjects listed under Edge and start each at the stage where it stopped holding, and include one subject that held, to check that it still does. A summary from a study session (qi-tutor) is used the same way: checkpoints marked reached become subjects. If it is broader than one N-C section or part of a Preskill chapter ("error correction", "algorithms"), narrow it.
-2. Propose 3 to 5 **subjects**: the sub-ideas the session will cover, each a short phrase, in an order that builds. Add one line on what is left out.
+2. Propose 3 to 5 **subjects**: the sub-ideas the session will cover, each a short phrase, in an order that builds, at about 15 minutes each and at most 2 for less than half an hour. Add one line on what is left out. If the user has not said how much time they have, ask with the proposal and adjust the list to the answer. If the user gives information about their own course, in the session or in `references/course.md`, order the subjects by its lecture order, leave out what it does not cover, and accept answers in its notation. What the user pastes takes precedence over the file.
 3. State the terms in a few lines: three stages (warm-up, second-year student, sceptical colleague); the listener is a role; some challenges will be tests and will be revealed as such; the aim is to find where the explanation stops holding; a correction, if needed, starts with "Stepping out:".
 4. Ask the user to confirm or change the subjects. Do not start until they have.
 
@@ -73,13 +75,13 @@ Keep track, per subject, of the current stage and how the last answers went.
 
 ## 5. Debrief
 
-When every subject has reached its edge or held through the third stage, or when the user asks to stop, leave the role and give:
+When every subject has reached its edge or held through the third stage, or when the user asks to stop or says their time is running out, leave the role and give:
 
 - **Held:** per subject, what was explained soundly and up to which stage.
 - **Edge:** per subject, the question at which the explanation stopped holding.
 - **Corrected:** each correction, in one line.
 - **Tests:** each test challenge, and whether the user held their ground.
-- **Reading:** sections for the edges, in study order (Wong, N-C, Preskill).
+- **Reading:** sections for the edges, in study order (Wong, N-C, Preskill). Where an edge was the mathematics and not the physics, the section of a mathematics book from `references/math-map.md`.
 - **Next session:** which edges to study first, and whether to study them (qi-tutor) or be questioned on them again.
 
 Give the debrief as one block the user can copy, and say in one line that pasting it at the start of a later session will pick up from the edges.
@@ -100,5 +102,8 @@ Colleague stage, test challenge. User (correctly): "Each half of a Bell pair on 
 
 ## Notation
 
-- Subscripted labels for new objects (|E₀⟩, |E₁⟩, |a₀⟩), never primes.
-- Separate summation signs per index (Σ_j Σ_k), not comma-combined indices.
+- Write all mathematics in LaTeX, never with Unicode symbols (⟩, ρ, Σ, √, ₀, ²) or ASCII stand-ins (rho, sqrt, x^2 outside math). This covers states, operators, variables, indices and formulas, including single symbols in running text: $\rho$, $T_1$, $\lvert 0 \rangle$, $\sqrt{\Gamma \, dt}$, $10^{-3}$. Units after a number stay plain text (100 µs, 5 GHz).
+- Delimiters: `$...$` inline, and `$$...$$` for a displayed equation, with the `$$` lines on their own. If the interface is known to render math only with other delimiters, such as `\(...\)` and `\[...\]`, use those. Never put mathematics in code blocks or backticks, which show it as raw source.
+- Use only commands that KaTeX and MathJax both render without extensions: kets as `\lvert \psi \rangle`, bras as `\langle \psi \rvert`, inner products as `\langle \phi \vert \psi \rangle`, outer products as `\lvert 0 \rangle\langle 1 \rvert`, and `\dagger`, `\otimes`, `\operatorname{tr}`. No `\ket`, `\bra`, `\braket` or other package macros.
+- Subscripted labels for new objects ($\lvert E_0 \rangle$, $\lvert E_1 \rangle$, $\lvert a_0 \rangle$), never primes.
+- Separate summation signs per index ($\sum_j \sum_k$), not comma-combined indices.

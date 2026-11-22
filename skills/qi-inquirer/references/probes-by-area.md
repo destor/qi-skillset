@@ -37,6 +37,24 @@ The questions below are seeds, written short. When asking one, give it the shape
 - "Errors can be any size. How can a few corrections cover all of them?"
 - "Who corrects the correcting circuit?"
 
+## Fault tolerance (N-C §10.6; Preskill Ch 8)
+
+- "What has to be true of one faulty gate for the code to survive it?"
+- "Why should there be a sharp error rate below which it works, and not a gradual slope?"
+- "If the checks are as noisy as the data, why repeat them?"
+
+## Complexity and simulation (N-C §3.2, §4.7; Preskill Ch 5, 6)
+
+- "If a quantum computer cannot solve the hardest problems quickly, what is it good for?"
+- "The equations for a molecule are known. Why is computing what it does hard for an ordinary computer?"
+- "Why do we count oracle calls and not the time the oracle takes?"
+
+## Hardware platforms (N-C Ch 7)
+
+- "Why not simply isolate the qubit better?"
+- "Ions keep their state for seconds and transmons for a fraction of a millisecond. Why build transmons at all?"
+- "What makes a qubit good, apart from living long?"
+
 ## Distance, entropy and information (N-C Ch 9, 11, 12; Preskill Ch 10)
 
 - "So how many bits is a qubit worth?"

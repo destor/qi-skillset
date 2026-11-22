@@ -8,7 +8,11 @@ Three AI assistant skills for a quantum computing and quantum information course
 | [qi-tutor](skills/qi-tutor/) | learn a topic step by step, or have your own solution checked | Guides you with scenarios, questions and graded hints instead of answers. If you stay stuck it works a similar problem, and it confirms your result once you have explained it yourself. |
 | [qi-inquirer](skills/qi-inquirer/) | be examined on a topic you already know | You explain, the assistant asks ever deeper questions and corrects only if you are far off. |
 
-The assistant picks the skill from how you phrase the request, so "explain decoherence", "let's study decoherence" and "question me on decoherence" start three different kinds of session. Study and questioning sessions end with a summary; paste it at the start of a later session to continue from where you stopped.
+The assistant picks the skill from how you phrase the request, so "explain decoherence", "let's study decoherence" and "question me on decoherence" start three different kinds of session. Study and questioning sessions start by asking how much time you have and plan the number of sub-topics to fit, about 15 minutes each. They end with a summary; paste it at the start of a later session to continue from where you stopped. Explanations end with two questions to check yourself on.
+
+## Your course
+
+The skills follow the textbooks by default. To have them follow your own course instead, give them its lecture order, the topics it leaves out and where its notation differs from Nielsen & Chuang. Either paste this at the start of a session, or fill in `shared/references/course.md` and build the skills yourself (see [Repository layout and building](#repository-layout-and-building)). The file in the release zips is empty.
 
 ## Sources
 
@@ -17,6 +21,13 @@ The skills point to chapters and sections in three textbooks. Two of them are fr
 - Preskill, [Ph219 lecture notes](https://www.preskill.caltech.edu/ph219/) (Caltech course page, with problem sets).
 - Wong, [*Introduction to Classical and Quantum Computing*](https://www.thomaswong.net/introduction-to-classical-and-quantum-computing-1e4p.pdf) (PDF from the [author's site](https://www.thomaswong.net/)).
 - Nielsen & Chuang, *Quantum Computation and Quantum Information*, 10th anniversary edition (not freely available).
+
+For the mathematics, where a step needs more than basic linear algebra, they point to four free books:
+
+- Axler, [*Linear Algebra Done Right*](https://linear.axler.net/), 4th edition: the concepts and proofs, including the spectral theorem, positive operators, the singular value and polar decompositions, and tensor products.
+- Treil, [*Linear Algebra Done Wrong*](https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong): the same material with more computation and determinants.
+- Watrous, [*The Theory of Quantum Information*](https://cs.uwaterloo.ca/~watrous/TQI/): the step from linear algebra to quantum channels (Choi, Kraus and Stinespring representations).
+- Judson, [*Abstract Algebra: Theory and Applications*](http://abstract.pugetsound.edu/): groups, modular arithmetic, finite fields, and classical codes with Hamming distance.
 
 ## Importing the skills
 
@@ -55,8 +66,8 @@ If your plan or app cannot import skills, use a prompt instead. Each release has
 
 | File | Contents | Size |
 | --- | --- | --- |
-| `<skill>-prompt.md` | The skill's instructions without its reference files. | About 1,500 words |
-| `<skill>-prompt-full.md` | The instructions followed by all reference files. | About 6,000 words (tutor, inquirer) or 11,000 words (explainer) |
+| `<skill>-prompt.md` | The skill's instructions without its reference files. | About 1,300 to 2,000 words |
+| `<skill>-prompt-full.md` | The instructions followed by all reference files. | About 8,500 words (tutor, inquirer) or 11,000 words (explainer) |
 
 1. Download the file from the [latest release](https://github.com/destor/qi-skillset/releases/latest) and open it in a text editor.
 2. Copy the whole text into the first message of a new chat. The assistant will ask for a topic; reply with just its name, such as "phase kick-back". No extra command is needed. You can also append your topic, question, problem or previous-session summary after the prompt to start directly.
@@ -64,9 +75,4 @@ If your plan or app cannot import skills, use a prompt instead. Each release has
 
 Start with the condensed prompt. Free chats have a limited memory for the conversation, and a long prompt leaves less of it for the session. Without the reference files the assistant cites chapters only and has less detail on each topic. Use the full prompt where the chat accepts it and you want section-level citations. In a long session the assistant may drift from the rules; paste the prompt again if it does.
 
-## Repository layout and building
 
-- `skills/<name>/` holds each skill's own files.
-- `shared/` holds files that every skill gets, such as the textbook map. They are merged into each skill when it is built, so the folders in `skills/` are not complete on their own. Import the release zips, not those folders.
-
-To build the zips locally, run `./scripts/build.sh`; they appear in `dist/`. The same run calls `scripts/build-prompts.sh`, which writes the copy-paste prompts to `dist/prompts/`. The prompts contain the skill's own text with nothing rewritten, so they need no separate upkeep.

@@ -9,7 +9,7 @@ Moves marked (test) put a wrong or opposing view to the user and must be closed 
 Easy, but still answered in sentences.
 
 - **What is it and what is it for?** "Let's start with the basics of the three-qubit code. Suppose I have never heard of a syndrome. In two or three sentences: what is it, and what is it used for once you have it?"
-- **Where does it show up?** "People quote a T2 for every qubit. Describe one experiment in which it is measured: what is done to the qubit, and what is plotted at the end?"
+- **Where does it show up?** "People quote a $T_2$ for every qubit. Describe one experiment in which it is measured: what is done to the qubit, and what is plotted at the end?"
 - **Describe an example.** "Noise comes in different kinds. Pick one process that disturbs a qubit without changing its energy, and describe what physically causes it."
 - **Before and after.** "Take a qubit that starts in an equal superposition and then sits idle for a long time. Describe its state at the start and at the end, and what changed in between."
 

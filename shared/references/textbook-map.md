@@ -10,6 +10,7 @@ Notes:
 
 - Wong has no density matrices or noise channels; do not cite it for those.
 - N-C Ch 7 predates superconducting qubits. For transmon-specific physics, supplement with Krantz et al., "A quantum engineer's guide to superconducting qubits", Appl. Phys. Rev. 6, 021318 (2019).
+- N-C Ch 7 also predates neutral-atom arrays. No textbook here covers them; give no section citation for them.
 - Preskill: cite it wherever it covers the topic, not only when N-C falls short. Cite by chapter only; the chapters have been revised at different times and section numbering differs between versions.
 
 ## Nielsen & Chuang (10th anniversary edition)
@@ -73,6 +74,11 @@ Notes:
   - Quantum information over noisy quantum channels: §12.4
   - Entanglement as a physical resource: §12.5
   - Quantum cryptography: §12.6
+- Appendices
+  - Basic probability theory: Appendix 1
+  - Group theory: Appendix 2
+  - Number theory, including continued fractions: Appendix 4
+  - Public key cryptography and RSA: Appendix 5
 
 ## Preskill, Ph219 lecture notes
 

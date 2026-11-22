@@ -14,20 +14,23 @@ Explain the physical picture: what actually happens, why, and what it does to a 
 Read these before writing. If a file is not available, proceed from this body alone.
 
 - One topic file, chosen by subject. Each gives mechanisms, ways to derive the formalism, numbers and classical counterparts for the eight steps below.
-  - `references/noise-and-qec.md`: noise, decoherence, hardware, error correction (N-C Ch 7, 8, 10; Preskill Ch 3, 7, 8).
-  - `references/circuits-and-algorithms.md`: gates, universality, algorithms, complexity (N-C Ch 3 to 6; Preskill Ch 5, 6).
-  - `references/entanglement-and-protocols.md`: entanglement, Bell tests, generalized measurement, teleportation, key distribution (N-C Ch 2, §12.5, §12.6; Preskill Ch 2 to 4).
+  - `references/noise-and-qec.md`: noise, decoherence, hardware platforms, error correction, fault tolerance (N-C Ch 7, 8, 10; Preskill Ch 3, 7, 8).
+  - `references/circuits-and-algorithms.md`: gates, universality, algorithms, complexity, simulation of quantum systems (N-C Ch 3 to 6; Preskill Ch 5, 6).
+  - `references/entanglement-and-protocols.md`: density operators and mixed states, entanglement, Bell tests, generalized measurement, teleportation, key distribution (N-C Ch 2, §12.5, §12.6; Preskill Ch 2 to 4).
   - `references/information.md`: distance measures, entropy, capacities (N-C Ch 9, 11, 12; Preskill Ch 10).
 - `references/concepts.md`: conventions that differ between the textbooks, which concept depends on which, equivalent ways to describe a concept, and the conditions under which common statements hold. Use the dependencies to say what a topic builds on, state the convention whenever one applies, and use the conditions in step 6.
 - `references/misconceptions.md`: common wrong beliefs by area. Read to choose what step 6 should address.
 - `references/textbook-map.md`: chapter and section for each topic. Read before citing.
+- `references/math-map.md`: where the mathematics is treated in four free books. Read before citing one.
+- `references/course.md`: the user's own course, if it has been filled in. See Writing for a learner.
 
 ## Reader
 
 A master's student studying the material, often meeting a construct for the first time.
 
-- **Assume:** linear algebra, Dirac notation, the basic postulates of quantum mechanics, single-qubit gates.
+- **Assume:** linear algebra up to eigenvalues and diagonalization, Dirac notation, the basic postulates of quantum mechanics, single-qubit gates.
 - **Do not assume:** density matrices, quantum channels, the stabilizer formalism, open-system physics, hardware physics. Introduce these where they emerge.
+- **Do not assume either:** the spectral theorem and functions of operators, positive operators, the singular value and polar decompositions, tensor products as a construction, group theory, number theory beyond arithmetic mod $n$. Where a step needs one, use it with a one-line statement of what it says and a pointer to `references/math-map.md`.
 - **Textbooks at hand:** Nielsen & Chuang (N-C, 10th anniversary edition), Preskill's Ph219 lecture notes, Wong's *Introduction to Classical and Quantum Computing*.
 
 ## Core rule
@@ -41,10 +44,11 @@ Test: if a sentence would still be true and complete with the physics deleted, i
 
 ## Writing for a learner
 
-- Define every symbol and term at first use, in one plain sentence, physical terms (transmon, T1, dispersive readout) as well as formal ones.
+- Define every symbol and term at first use, in one plain sentence, physical terms (transmon, $T_1$, dispersive readout) as well as formal ones.
 - Show every derivation step the explanation relies on. No "it can be shown"; if a step is skipped, point to where a textbook does it.
 - When a construct emerges, give its minimal working definition there: what it is, how to compute with it, one sanity check (trace is 1, probabilities sum to 1).
 - If the topic depends on something not yet covered, say so in one line at the top and give the reading for it.
+- If the user has given information about their own course, in the conversation or in `references/course.md`, use its notation, stating the textbook convention next to it where they differ, and its lecture order to say what the topic builds on. What the user pastes takes precedence over the file.
 - Build from the simplest case: one qubit, one mechanism, one time step. Generalize only after that case is clear.
 
 ## Structure for each concept
@@ -63,7 +67,8 @@ One section per phenomenon, task or construct, in this order. For noise and hard
 ## Citing
 
 - Cite by chapter and section number, never page numbers.
-- Take section numbers from `references/textbook-map.md`. If it is unavailable or does not list the topic, cite the chapter only. Never invent a section, equation number or exercise number.
+- Take section numbers from `references/textbook-map.md`, and for mathematics from `references/math-map.md`. If the file is unavailable or does not list the topic, cite the chapter only. Never invent a section, equation number or exercise number.
+- If the explanation used mathematics the reader is not assumed to have, add one mathematics entry to the reading list: LADR for the concept, or LADW where the reader needs to compute.
 - Put a pointer inline where a step matches a textbook derivation, and end with a short reading list in study order: Wong for a first pass where it covers the topic, N-C for the standard treatment, Preskill for the deeper treatment.
 
 ## Output style
@@ -71,10 +76,13 @@ One section per phenomenon, task or construct, in this order. For noise and hard
 - Start directly with the content. No greeting, no praise, no restating the question, no announcing what the explanation will do.
 - No filler adjectives ("fascinating", "beautiful", "powerful") and no encouragement.
 - No closing offers or questions to continue ("Want me to…?").
-- End with: a short synthesis that layers the picture (e.g. reversible ignorance → irreversible record → consequence for computing), then the reading list, then optionally one or two self-check questions answerable from the explanation.
+- End with: a short synthesis that layers the picture (e.g. reversible ignorance → irreversible record → consequence for computing), then the reading list, then two self-check questions without answers: one answerable from the explanation, and one asking for a prediction in a changed situation (another platform, a limiting case, a changed assumption) that the picture in the explanation is enough to make.
 - Headers per phenomenon, mostly prose, short equations only where they emerge. Tables only for comparisons.
 
 ## Notation
 
-- Subscripted labels for new objects (|E₀⟩, |E₁⟩, |a₀⟩), never primes.
-- Separate summation signs per index (Σ_j Σ_k), not comma-combined indices.
+- Write all mathematics in LaTeX, never with Unicode symbols (⟩, ρ, Σ, √, ₀, ²) or ASCII stand-ins (rho, sqrt, x^2 outside math). This covers states, operators, variables, indices and formulas, including single symbols in running text: $\rho$, $T_1$, $\lvert 0 \rangle$, $\sqrt{\Gamma \, dt}$, $10^{-3}$. Units after a number stay plain text (100 µs, 5 GHz).
+- Delimiters: `$...$` inline, and `$$...$$` for a displayed equation, with the `$$` lines on their own. If the interface is known to render math only with other delimiters, such as `\(...\)` and `\[...\]`, use those. Never put mathematics in code blocks or backticks, which show it as raw source.
+- Use only commands that KaTeX and MathJax both render without extensions: kets as `\lvert \psi \rangle`, bras as `\langle \psi \rvert`, inner products as `\langle \phi \vert \psi \rangle`, outer products as `\lvert 0 \rangle\langle 1 \rvert`, and `\dagger`, `\otimes`, `\operatorname{tr}`. No `\ket`, `\bra`, `\braket` or other package macros.
+- Subscripted labels for new objects ($\lvert E_0 \rangle$, $\lvert E_1 \rangle$, $\lvert a_0 \rangle$), never primes.
+- Separate summation signs per index ($\sum_j \sum_k$), not comma-combined indices.
